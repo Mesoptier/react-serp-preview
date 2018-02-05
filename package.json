@@ -1,0 +1,18 @@
+{
+  "name": "react-serp-preview",
+  "version": "0.0.0",
+  "description": "Preview how your page would appear in a search engine result page.",
+  "main": "index.js",
+  "author": "koen <koen.klaren@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
