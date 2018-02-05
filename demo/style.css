@@ -1,0 +1,38 @@
+html {
+    font: 14px arial, sans-serif;
+}
+
+#container {
+    margin: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.options > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.options input,
+.options textarea {
+    width: 300px;
+    margin-left: 20px;
+    padding: 5px;
+    border: 1px solid #aaa;
+}
+
+.preview {
+    margin-top: 50px;
+    padding: 20px;
+    width: 600px;
+    border: 1px solid #ddd;
+}
