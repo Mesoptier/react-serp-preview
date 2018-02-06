@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src/SerpPreview.js --out-file dist/react-serp-preview.js --source-maps",
+    "prepublish": "npm run build",
     "build:demo": "webpack --config webpack.config.demo.js --optimize-minimize",
     "start:demo": "webpack-dev-server --config webpack.config.demo.js"
   },
