@@ -30,6 +30,11 @@ html {
     border: 1px solid #aaa;
 }
 
+.options textarea {
+    height: 100px;
+    resize: vertical;
+}
+
 .preview {
     margin-top: 50px;
     padding: 20px;
