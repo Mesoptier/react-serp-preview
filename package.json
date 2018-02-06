@@ -1,11 +1,12 @@
 {
   "name": "react-serp-preview",
-  "version": "0.0.0",
-  "description": "Preview how your page would appear in a search engine result page.",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Visualise how your website will appear in the Google search results.",
+  "main": "dist/react-serp-preview.js",
   "author": "koen <koen.klaren@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "babel src/SerpPreview.js --out-file dist/react-serp-preview.js --source-maps",
     "build:demo": "webpack --config webpack.config.demo.js --optimize-minimize",
     "start:demo": "webpack-dev-server --config webpack.config.demo.js"
   },
@@ -16,6 +17,7 @@
     "react": "^16.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
