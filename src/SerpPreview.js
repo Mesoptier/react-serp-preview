@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 const propTypes = {
-    title: PropTypes.string,
-    metaDescription: PropTypes.string,
-    url: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    metaDescription: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
 };
 
 const styles = {
