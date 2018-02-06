@@ -1,15 +1,53 @@
 html {
-    font: 14px arial, sans-serif;
+    font: 14px Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
 }
 
 #container {
-    margin: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 50px;
+
+    font-size: 16px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: normal;
+}
+
+.header .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .links a {
+    color: #1a0dab;
+}
+
+.preview {
+    margin: 0 50px;
+    padding: 20px;
+    width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 .options {
+    width: 500px;
+    margin: 50px;
     display: flex;
     flex-direction: column;
 }
@@ -24,20 +62,15 @@ html {
 
 .options input,
 .options textarea {
-    width: 300px;
+    width: 350px;
     margin-left: 20px;
-    padding: 5px;
+    padding: 6px;
     border: 1px solid #aaa;
+
+    font: inherit;
 }
 
 .options textarea {
     height: 100px;
     resize: vertical;
-}
-
-.preview {
-    margin-top: 50px;
-    padding: 20px;
-    width: 600px;
-    border: 1px solid #ddd;
 }

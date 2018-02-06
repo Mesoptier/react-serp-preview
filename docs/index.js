@@ -8,9 +8,9 @@ class Demo extends React.Component {
         super(props);
 
         this.state = {
-            title: 'My cool page title',
+            title: 'Example Domain',
             metaDescription:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac vehicula odio. Duis quis rhoncus quam. Nullam ac velit nec neque auctor ullamcorper.',
+                'Example Domain. This domain is established to be used for illustrative examples in documents. You may use this domain in examples without prior coordination or asking for permission.',
             url: 'https://example.com/',
         };
 
@@ -40,6 +40,20 @@ class Demo extends React.Component {
     render() {
         return (
             <React.Fragment>
+                <div className="header">
+                    <h1>React <abbr title="Search Engine Result Page">SERP</abbr> Preview</h1>
+                    <p>Visualise how your website will appear in the Google search results.</p>
+                    <div className="links">
+                        <a href="https://github.com/Mesoptier/react-serp-preview">Code and docs on GitHub</a>
+                    </div>
+                </div>
+                <div className="preview">
+                    <SerpPreview
+                        title={this.state.title}
+                        metaDescription={this.state.metaDescription}
+                        url={this.state.url}
+                    />
+                </div>
                 <div className="options">
                     <div>
                         <label htmlFor="title">Title</label>
@@ -61,18 +75,12 @@ class Demo extends React.Component {
                     <div>
                         <label htmlFor="url">URL</label>
                         <input
+                            id="url"
                             type="text"
                             value={this.state.url}
                             onChange={this.changeUrl}
                         />
                     </div>
-                </div>
-                <div className="preview">
-                    <SerpPreview
-                        title={this.state.title}
-                        metaDescription={this.state.metaDescription}
-                        url={this.state.url}
-                    />
                 </div>
             </React.Fragment>
         );
