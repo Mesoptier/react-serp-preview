@@ -8,7 +8,8 @@ class Demo extends React.Component {
         super(props);
 
         this.state = {
-            title: 'Example Domain',
+            title:
+                'Example Domain - Titles are truncated when they exceed the 600 pixels mark',
             metaDescription:
                 'Example Domain. This domain is established to be used for illustrative examples in documents. You may use this domain in examples without prior coordination or asking for permission.',
             url: 'https://example.com/',
@@ -41,10 +42,19 @@ class Demo extends React.Component {
         return (
             <React.Fragment>
                 <div className="header">
-                    <h1>React <abbr title="Search Engine Result Page">SERP</abbr> Preview</h1>
-                    <p>Visualise how your website will appear in the Google search results.</p>
+                    <h1>
+                        React{' '}
+                        <abbr title="Search Engine Result Page">SERP</abbr>{' '}
+                        Preview
+                    </h1>
+                    <p>
+                        Visualise how your website will appear in the Google
+                        search results.
+                    </p>
                     <div className="links">
-                        <a href="https://github.com/Mesoptier/react-serp-preview">Code and docs on GitHub</a>
+                        <a href="https://github.com/Mesoptier/react-serp-preview">
+                            Code and docs on GitHub
+                        </a>
                     </div>
                 </div>
                 <div className="preview">
@@ -65,7 +75,9 @@ class Demo extends React.Component {
                         />
                     </div>
                     <div>
-                        <label htmlFor="metaDescription">Meta description</label>
+                        <label htmlFor="metaDescription">
+                            Meta description
+                        </label>
                         <textarea
                             id="metaDescription"
                             value={this.state.metaDescription}
