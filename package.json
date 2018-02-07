@@ -2,7 +2,7 @@
   "name": "react-serp-preview",
   "version": "0.2.3",
   "description": "Visualise how your website will appear in the Google search results.",
-  "main": "dist/react-serp-preview.js",
+  "main": "dist/SerpPreview.js",
   "author": "Koen Klaren <koen.klaren@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -18,7 +18,7 @@
     "react-component"
   ],
   "scripts": {
-    "build": "babel src/SerpPreview.js --out-file dist/react-serp-preview.js --source-maps",
+    "build": "babel src --out-dir dist --source-maps",
     "prepack": "npm run build",
     "build:demo": "webpack --config webpack.config.demo.js --optimize-minimize",
     "start:demo": "webpack-dev-server --config webpack.config.demo.js"
