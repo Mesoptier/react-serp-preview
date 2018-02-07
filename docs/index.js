@@ -9,7 +9,7 @@ class Demo extends React.Component {
 
         this.state = {
             title:
-                'Example Domain - Titles are truncated when they exceed the 600 pixels mark',
+                'Example Domain – Titles are truncated when they exceed the 600 pixels mark',
             metaDescription:
                 'Example Domain. This domain is established to be used for illustrative examples in documents. You may use this domain in examples without prior coordination or asking for permission.',
             url: 'https://example.com/',
