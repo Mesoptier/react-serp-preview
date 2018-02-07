@@ -4,7 +4,8 @@ import * as PropTypes from 'prop-types';
 
 const propTypes = {
     element: PropTypes.string,
-    maxWidth: PropTypes.number.isRequired,
+    maxWidth: PropTypes.number,
+    maxChars: PropTypes.number,
     children: PropTypes.string.isRequired,
 };
 
@@ -18,7 +19,7 @@ function truncateWord(str) {
     return str.replace(/\s+\S+$/, '');
 }
 
-class TruncateWidth extends React.Component {
+class Truncate extends React.Component {
     constructor(props) {
         super(props);
 
@@ -34,16 +35,26 @@ class TruncateWidth extends React.Component {
     }
 
     componentDidMount() {
-        this.checkWidth();
+        this.truncate();
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.children !== prevProps.children) {
-            this.checkWidth();
+            this.truncate();
         }
     }
 
-    checkWidth() {
+    truncate() {
+        if (this.props.maxWidth) {
+            this.truncateWidth();
+        }
+
+        if (this.props.maxChars) {
+            this.truncateChars();
+        }
+    }
+
+    truncateWidth() {
         const node = ReactDOM.findDOMNode(this);
 
         if (node.scrollWidth > this.props.maxWidth) {
@@ -64,31 +75,37 @@ class TruncateWidth extends React.Component {
         }
     }
 
+    truncateChars() {
+        if (this.props.children.length > this.props.maxChars) {
+            let children = this.props.children;
+            while (
+                (children + ellipsis).length > this.props.maxChars &&
+                children !== truncateWord(children)
+            ) {
+                children = truncateWord(children);
+            }
+
+            this.setState({
+                truncatedChildren: children + ellipsis,
+            });
+        }
+    }
+
     render() {
         const {
             element: Element,
             maxWidth,
+            maxChars,
             children,
-            style: userStyle = {},
             ...otherProps
         } = this.props;
         const { truncatedChildren } = this.state;
-        const style = {
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            ...userStyle,
-        };
 
-        return (
-            <Element style={style} {...otherProps}>
-                {truncatedChildren}
-            </Element>
-        );
+        return <Element {...otherProps}>{truncatedChildren}</Element>;
     }
 }
 
-TruncateWidth.propTypes = propTypes;
-TruncateWidth.defaultProps = defaultProps;
+Truncate.propTypes = propTypes;
+Truncate.defaultProps = defaultProps;
 
-export default TruncateWidth;
+export default Truncate;

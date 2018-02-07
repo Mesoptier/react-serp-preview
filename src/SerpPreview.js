@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import TruncateWidth from './TruncateWidth';
+import Truncate from './Truncate';
 
 const propTypes = {
     title: PropTypes.string.isRequired,
@@ -18,28 +18,40 @@ const styles = {
         fontSize: 18,
         fontWeight: 400,
         lineHeight: 1.2,
+
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
     },
     url: {
         height: 18,
         color: '#006621',
         fontSize: 14,
         lineHeight: '16px',
+
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
     },
     description: {
         color: '#545454',
         fontSize: 13,
         lineHeight: 1.4,
+
+        wordWrap: 'break-word',
     },
 };
 
 function SerpPreview({ title, metaDescription, url, ...otherProps }) {
     return (
         <div style={styles.root} {...otherProps}>
-            <TruncateWidth element="div" maxWidth={600} style={styles.title}>
+            <Truncate element="div" maxWidth={600} style={styles.title}>
                 {title}
-            </TruncateWidth>
+            </Truncate>
             <div style={styles.url}>{url}</div>
-            <div style={styles.description}>{metaDescription}</div>
+            <Truncate element="div" maxChars={300} style={styles.description}>
+                {metaDescription}
+            </Truncate>
         </div>
     );
 }

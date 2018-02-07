@@ -11,7 +11,7 @@ class Demo extends React.Component {
             title:
                 'Example Domain – Titles are truncated when they exceed the 600 pixels mark',
             metaDescription:
-                'Example Domain. This domain is established to be used for illustrative examples in documents. You may use this domain in examples without prior coordination or asking for permission.',
+                'Example Domain. This domain is established to be used for illustrative examples in documents. You may use this domain in examples without prior coordination or asking for permission. – Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum sed eros iaculis congue. Aliquam erat volutpat. Aenean tortor sapien, porta ac interdum vel, interdum sed sapien.',
             url: 'https://example.com/',
         };
 
