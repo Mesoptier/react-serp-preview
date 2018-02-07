@@ -5,6 +5,9 @@ Visualise how your website will appear in the Google search results.
 
 ![Preview](preview.png)
 
+- Same look as Google search results
+- Titles are truncated at 600 pixels
+- Description is truncated around 300 characters
 
 ## Installation
 
