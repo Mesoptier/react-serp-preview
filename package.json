@@ -3,8 +3,20 @@
   "version": "0.2.1",
   "description": "Visualise how your website will appear in the Google search results.",
   "main": "dist/react-serp-preview.js",
-  "author": "koen <koen.klaren@gmail.com>",
+  "author": "Koen Klaren <koen.klaren@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mesoptier/react-serp-preview.git"
+  },
+  "keywords": [
+    "google",
+    "seo",
+    "serp",
+    "preview",
+    "react",
+    "react-component"
+  ],
   "scripts": {
     "build": "babel src/SerpPreview.js --out-file dist/react-serp-preview.js --source-maps",
     "prepack": "npm run build",
