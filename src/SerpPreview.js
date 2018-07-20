@@ -6,11 +6,15 @@ const propTypes = {
     title: PropTypes.string.isRequired,
     metaDescription: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
+    width: PropTypes.number,
+};
+
+const defaultProps = {
+    width: 600,
 };
 
 const styles = {
     root: {
-        width: 600,
         fontFamily: 'arial,sans-serif',
     },
     title: {
@@ -42,10 +46,10 @@ const styles = {
     },
 };
 
-function SerpPreview({ title, metaDescription, url, ...otherProps }) {
+function SerpPreview({ title, metaDescription, url, width, ...otherProps }) {
     return (
-        <div style={styles.root} {...otherProps}>
-            <Truncate element="div" maxWidth={600} style={styles.title}>
+        <div style={{ ...styles.root, width }} {...otherProps}>
+            <Truncate element="div" maxWidth={width} style={styles.title}>
                 {title}
             </Truncate>
             <div style={styles.url}>{url}</div>
@@ -57,5 +61,6 @@ function SerpPreview({ title, metaDescription, url, ...otherProps }) {
 }
 
 SerpPreview.propTypes = propTypes;
+SerpPreview.defaultProps = defaultProps;
 
 export default SerpPreview;
