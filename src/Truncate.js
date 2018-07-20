@@ -29,9 +29,15 @@ class Truncate extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            truncatedChildren: nextProps.children,
-        });
+        if (
+            this.props.children !== nextProps.children ||
+            this.props.maxWidth !== nextProps.maxWidth ||
+            this.props.maxChars !== nextProps.maxChars
+        ) {
+            this.setState({
+                truncatedChildren: nextProps.children,
+            });
+        }
     }
 
     componentDidMount() {
@@ -39,7 +45,11 @@ class Truncate extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.children !== prevProps.children) {
+        if (
+            this.props.children !== prevProps.children ||
+            this.props.maxWidth !== prevProps.maxWidth ||
+            this.props.maxChars !== prevProps.maxChars
+        ) {
             this.truncate();
         }
     }
