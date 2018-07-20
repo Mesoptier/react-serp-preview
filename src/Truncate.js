@@ -13,7 +13,7 @@ const defaultProps = {
     element: 'div',
 };
 
-const ellipsis = ' …';
+const ellipsis = '\u00A0…';
 
 function truncateWord(str) {
     return str.replace(/\s+\S+$/, '');
