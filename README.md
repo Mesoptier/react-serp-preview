@@ -6,7 +6,7 @@ Visualise how your website will appear in the Google search results.
 ![Preview](preview.png)
 
 - Same look as Google search results
-- Titles are truncated at 600 pixels
+- Titles are truncated at 600 pixels (by default)
 - Description is truncated around 300 characters
 
 ## Installation
@@ -31,8 +31,9 @@ import SerpPreview from 'react-serp-preview';
 />
 ```
 
-| Prop              | Type     | Description                      |
-|:----------------- |:-------- |:-------------------------------- |
-| `title`           | `string` | _(required)_ Website title       |
-| `metaDescription` | `string` | _(required)_ Website description |
-| `url`             | `string` | _(required)_ Website URL         |
+| Prop              | Type     | Description                            |
+|:----------------- |:-------- |:--------------------------------------- |
+| `title`           | `string` | _(required)_ Website title             |
+| `metaDescription` | `string` | _(required)_ Website description       |
+| `url`             | `string` | _(required)_ Website URL               |
+| `width`           | `number` | _(default: 600)_ Width of the preview  |
