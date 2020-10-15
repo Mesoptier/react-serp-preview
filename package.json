@@ -20,7 +20,7 @@
   "scripts": {
     "build": "babel src --out-dir dist --source-maps",
     "prepack": "npm run build",
-    "build:demo": "webpack --config webpack.config.demo.js --optimize-minimize",
+    "build:demo": "webpack --config webpack.config.demo.js",
     "start:demo": "webpack serve --config webpack.config.demo.js --mode=development"
   },
   "dependencies": {
