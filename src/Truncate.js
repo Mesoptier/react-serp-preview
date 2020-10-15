@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 const propTypes = {
     element: PropTypes.string,
@@ -19,100 +19,84 @@ function truncateWord(str) {
     return str.replace(/\s+\S+$/, '');
 }
 
-class Truncate extends React.Component {
-    constructor(props) {
-        super(props);
+function Truncate({
+    element: Element,
+    maxWidth,
+    maxChars,
+    children,
+    style,
+    ...otherProps
+}) {
+    const nodeRef = useRef(null);
+    const [truncatedChildren, setTruncatedChildren] = useState(children);
 
-        this.state = {
-            truncatedChildren: props.children,
+    // Truncate width
+    useLayoutEffect(() => {
+        if (!maxWidth) return;
+
+        /** @type HTMLElement */
+        const node = nodeRef.current;
+        node.innerText = children;
+
+        if (node.scrollWidth > maxWidth) {
+            node.innerText = children + ellipsis;
+
+            let newChildren = children;
+            while (
+                node.scrollWidth > maxWidth &&
+                newChildren !== truncateWord(newChildren)
+            ) {
+                newChildren = truncateWord(newChildren);
+                node.innerText = newChildren + ellipsis;
+            }
+
+            setTruncatedChildren(newChildren + ellipsis);
+        } else {
+            setTruncatedChildren(children);
+        }
+    }, [maxWidth, children]);
+
+    // Truncate chars
+    useEffect(() => {
+        if (!maxChars) return;
+
+        if (children.length > maxChars) {
+            let newChildren = children;
+            while (
+                (newChildren + ellipsis).length > maxChars &&
+                newChildren !== truncateWord(newChildren)
+            ) {
+                newChildren = truncateWord(newChildren);
+            }
+
+            setTruncatedChildren(newChildren + ellipsis);
+        } else {
+            setTruncatedChildren(children);
+        }
+    }, [maxChars, children]);
+
+    // Set required styles
+    let ownStyle = {};
+    if (maxWidth) {
+        ownStyle = {
+            ...ownStyle,
+            maxWidth,
+            overflow: 'hidden',
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (
-            this.props.children !== nextProps.children ||
-            this.props.maxWidth !== nextProps.maxWidth ||
-            this.props.maxChars !== nextProps.maxChars
-        ) {
-            this.setState({
-                truncatedChildren: nextProps.children,
-            });
-        }
-    }
-
-    componentDidMount() {
-        this.truncate();
-    }
-
-    componentDidUpdate(prevProps) {
-        if (
-            this.props.children !== prevProps.children ||
-            this.props.maxWidth !== prevProps.maxWidth ||
-            this.props.maxChars !== prevProps.maxChars
-        ) {
-            this.truncate();
-        }
-    }
-
-    truncate() {
-        if (this.props.maxWidth) {
-            this.truncateWidth();
-        }
-
-        if (this.props.maxChars) {
-            this.truncateChars();
-        }
-    }
-
-    truncateWidth() {
-        const node = ReactDOM.findDOMNode(this);
-
-        if (node.scrollWidth > this.props.maxWidth) {
-            let children = this.props.children;
-            node.innerText = children + ellipsis;
-
-            while (
-                node.scrollWidth > this.props.maxWidth &&
-                children !== truncateWord(children)
-            ) {
-                children = truncateWord(children);
-                node.innerText = children + ellipsis;
-            }
-
-            this.setState({
-                truncatedChildren: children + ellipsis,
-            });
-        }
-    }
-
-    truncateChars() {
-        if (this.props.children.length > this.props.maxChars) {
-            let children = this.props.children;
-            while (
-                (children + ellipsis).length > this.props.maxChars &&
-                children !== truncateWord(children)
-            ) {
-                children = truncateWord(children);
-            }
-
-            this.setState({
-                truncatedChildren: children + ellipsis,
-            });
-        }
-    }
-
-    render() {
-        const {
-            element: Element,
-            maxWidth,
-            maxChars,
-            children,
-            ...otherProps
-        } = this.props;
-        const { truncatedChildren } = this.state;
-
-        return <Element {...otherProps}>{truncatedChildren}</Element>;
-    }
+    return (
+        <Element
+            ref={nodeRef}
+            style={{
+                ...ownStyle,
+                ...style,
+            }}
+            {...otherProps}
+        >
+            {truncatedChildren}
+        </Element>
+    );
 }
 
 Truncate.propTypes = propTypes;
