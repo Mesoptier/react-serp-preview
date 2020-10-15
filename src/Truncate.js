@@ -16,7 +16,7 @@ const defaultProps = {
 const ellipsis = '\u00A0…';
 
 function truncateWord(str) {
-    return str.replace(/\s+\S+$/, '');
+    return str.replace(/\s+\S+\s*$/, '');
 }
 
 function Truncate({
