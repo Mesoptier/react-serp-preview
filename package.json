@@ -1,6 +1,6 @@
 {
   "name": "react-serp-preview",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Visualise how your website will appear in the Google search results.",
   "main": "dist/SerpPreview.js",
   "author": "Koen Klaren <koen.klaren@gmail.com>",
