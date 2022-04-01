@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom/client';
 
 import SerpPreview from '../src/SerpPreview';
 
@@ -8,8 +8,7 @@ class Demo extends React.Component {
         super(props);
 
         this.state = {
-            title:
-                'Example Domain – Titles are truncated when they exceed the 600 pixels mark',
+            title: 'Example Domain – Titles are truncated when they exceed the 600 pixels mark',
             metaDescription:
                 'Example Domain. This domain is established to be used for illustrative examples in documents. You may use this domain in examples without prior coordination or asking for permission. – Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum sed eros iaculis congue. Aliquam erat volutpat. Aenean tortor sapien, porta ac interdum vel, interdum sed sapien.',
             url: 'https://example.com/',
@@ -121,4 +120,9 @@ class Demo extends React.Component {
 }
 
 const container = document.getElementById('container');
-ReactDOM.render(<Demo />, container);
+const root = ReactDOM.createRoot(container);
+root.render(
+    <React.StrictMode>
+        <Demo />
+    </React.StrictMode>
+);
